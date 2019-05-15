@@ -707,6 +707,7 @@ namespace BinaryNinja
 	std::string GetUniqueIdentifierString();
 
 	std::map<std::string, uint64_t> GetMemoryUsageInfo();
+	std::vector<std::string> GetRegisteredPluginLoaders();
 
 	class DataBuffer
 	{
@@ -4256,17 +4257,32 @@ namespace BinaryNinja
 		void SetEnabled(bool enabled);
 		bool IsEnabled() const;
 		PluginUpdateStatus GetPluginUpdateStatus() const;
-		std::string GetApi() const;
+		std::vector<std::string> GetApis() const;
 		std::string GetAuthor() const;
 		std::string GetDescription() const;
 		std::string GetLicense() const;
 		std::string GetLicenseText() const;
 		std::string GetLongdescription() const;
-		std::string GetMinimimVersions() const;
+		uint64_t GetMinimimVersion() const;
 		std::string GetName() const;
 		std::vector<PluginType> GetPluginTypes() const;
-		std::string GetUrl() const;
+		std::string GetPackageUrl() const;
+		std::string GetProjectUrl() const;
+		std::string GetAuthorUrl() const;
 		std::string GetVersion() const;
+		std::string GetCommit() const;
+		std::string GetRepository() const;
+
+		std::vector<std::string> GetInstallPlatforms() const;
+		std::string GetInstallInstructions(const std::string& platform) const;
+
+		bool IsBeingDeleted() const;
+		bool IsBeingUpdated() const;
+		bool Uninstall();
+		bool Install();
+		bool Enable(bool force);
+		bool Disable();
+		std::string GetReadme();
 	};
 
 	class Repository: public CoreRefCountObject<BNRepository, BNNewRepositoryReference, BNFreeRepository>
@@ -4294,10 +4310,9 @@ namespace BinaryNinja
 		std::vector<Ref<Repository>> GetRepositories();
 		Ref<Repository> GetRepositoryByPath(const std::string& repoName);
 		bool AddRepository(const std::string& url,
-			const std::string& repoPath, // Relative path within the repositories directory
-			const std::string& localReference="master",
-			const std::string& remoteReference="origin");
-		bool EnablePlugin(const std::string& repoName, const std::string& pluginPath);
+			const std::string& repoPath); // Relative path within the repositories directory
+
+		bool EnablePlugin(const std::string& repoName, const std::string& pluginPath, bool force);
 		bool DisablePlugin(const std::string& repoName, const std::string& pluginPath);
 		bool InstallPlugin(const std::string& repoName, const std::string& pluginPath);
 		bool UninstallPlugin(const std::string& repoName, const std::string& pluginPath);
