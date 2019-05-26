@@ -167,10 +167,22 @@ bool RepoPlugin::IsBeingUpdated() const
 }
 
 
-string RepoPlugin::GetReadme()
+// string RepoPlugin::GetReadme()
+// {
+// 	RETURN_STRING(BNPluginGetReadme(m_object));
+// }
+
+
+uint64_t RepoPlugin::GetLastUpdate()
 {
-	RETURN_STRING(BNPluginGetReadme(m_object));
+	return BNPluginGetLastUpdate(m_object);
 }
+
+string RepoPlugin::GetProjectData()
+{
+	RETURN_STRING(BNPluginGetProjectData(m_object));
+}
+
 
 bool RepoPlugin::Uninstall()
 {
@@ -218,6 +230,7 @@ vector<Ref<RepoPlugin>> Repository::GetPlugins() const
 	vector<Ref<RepoPlugin>> plugins;
 	size_t count = 0;
 	BNRepoPlugin** pluginsPtr = BNRepositoryGetPlugins(m_object, &count);
+	plugins.reserve(count);
 	for (size_t i = 0; i < count; i++)
 		plugins.push_back(new RepoPlugin(BNNewPluginReference(pluginsPtr[i])));
 	BNFreeRepositoryPluginList(pluginsPtr);

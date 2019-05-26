@@ -4282,7 +4282,8 @@ namespace BinaryNinja
 		bool Install();
 		bool Enable(bool force);
 		bool Disable();
-		std::string GetReadme();
+		uint64_t GetLastUpdate();
+		std::string GetProjectData();
 	};
 
 	class Repository: public CoreRefCountObject<BNRepository, BNNewRepositoryReference, BNFreeRepository>

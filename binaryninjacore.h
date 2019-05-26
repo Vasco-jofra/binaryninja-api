@@ -3735,7 +3735,9 @@ extern "C"
 	BINARYNINJACOREAPI const char* BNPluginGetRepository(BNRepoPlugin* p);
 	BINARYNINJACOREAPI bool BNPluginIsBeingDeleted(BNRepoPlugin* p);
 	BINARYNINJACOREAPI bool BNPluginIsBeingUpdated(BNRepoPlugin* p);
-	BINARYNINJACOREAPI char* BNPluginGetReadme(BNRepoPlugin* p);
+	// BINARYNINJACOREAPI char* BNPluginGetReadme(BNRepoPlugin* p);
+	BINARYNINJACOREAPI char* BNPluginGetProjectData(BNRepoPlugin* p);
+	BINARYNINJACOREAPI uint64_t BNPluginGetLastUpdate(BNRepoPlugin* p);
 
 	BINARYNINJACOREAPI BNRepository* BNNewRepositoryReference(BNRepository* r);
 	BINARYNINJACOREAPI void BNFreeRepository(BNRepository* r);

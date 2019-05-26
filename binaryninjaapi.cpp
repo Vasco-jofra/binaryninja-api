@@ -357,7 +357,6 @@ string BinaryNinja::GetUniqueIdentifierString()
 }
 
 
-<<<<<<< HEAD
 map<string, uint64_t> BinaryNinja::GetMemoryUsageInfo()
 {
 	size_t count;
@@ -369,7 +368,8 @@ map<string, uint64_t> BinaryNinja::GetMemoryUsageInfo()
 	BNFreeMemoryUsageInfo(info, count);
 	return result;
 }
-=======
+
+
 vector<string> BinaryNinja::GetRegisteredPluginLoaders()
 {
 	size_t count = 0;
@@ -381,4 +381,3 @@ vector<string> BinaryNinja::GetRegisteredPluginLoaders()
 	BNFreeRegisteredPluginLoadersList(loaders, count);
 	return result;
 }
->>>>>>> API changes to support plugin installation UI
