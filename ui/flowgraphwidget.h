@@ -285,6 +285,8 @@ private Q_SLOTS:
 	void functionComment();
 	void commentAccepted();
 	void functionCommentAccepted();
+	void tagAddress();
+	void tagFunction();
 
 	void convertToNop();
 	void alwaysBranch();
