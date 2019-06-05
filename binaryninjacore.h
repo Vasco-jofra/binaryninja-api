@@ -2981,6 +2981,7 @@ extern "C"
 	BINARYNINJACOREAPI int BNGetFlowGraphNodeY(BNFlowGraphNode* node);
 	BINARYNINJACOREAPI int BNGetFlowGraphNodeWidth(BNFlowGraphNode* node);
 	BINARYNINJACOREAPI int BNGetFlowGraphNodeHeight(BNFlowGraphNode* node);
+	BINARYNINJACOREAPI int BNGetFlowGraphNodeMaxTags(BNFlowGraphNode* node);
 
 	BINARYNINJACOREAPI BNDisassemblyTextLine* BNGetFlowGraphNodeLines(BNFlowGraphNode* node, size_t* count);
 	BINARYNINJACOREAPI void BNSetFlowGraphNodeLines(BNFlowGraphNode* node, BNDisassemblyTextLine* lines, size_t count);
