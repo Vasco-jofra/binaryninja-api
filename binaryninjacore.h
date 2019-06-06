@@ -1186,6 +1186,7 @@ extern "C"
 		BNInstructionTextTokenType type;
 		char* text;
 		uint64_t value;
+		uint64_t width;
 		size_t size, operand;
 		BNInstructionTextTokenContext context;
 		uint8_t confidence;
