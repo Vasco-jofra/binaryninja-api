@@ -287,6 +287,8 @@ private Q_SLOTS:
 	void functionCommentAccepted();
 	void bookmarkAddress();
 	void bookmarkFunction();
+	void unbookmarkAddress();
+	void unbookmarkFunction();
 
 	void convertToNop();
 	void alwaysBranch();
