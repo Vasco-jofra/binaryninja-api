@@ -4348,6 +4348,34 @@ class BinaryView(object):
 		core.BNFreeStringList(outgoing_names, len(name_list))
 		return result
 
+	@property
+	def comments(self):
+		"""Dict of comments (read-only)"""
+		count = ctypes.c_ulonglong()
+		addrs = core.BNGetGlobalCommentedAddresses(self.handle, count)
+		result = {}
+		for i in range(0, count.value):
+			result[addrs[i]] = self.get_comment_at(addrs[i])
+		core.BNFreeAddressList(addrs)
+		return result
+
+	def get_comment_at(self, addr):
+		return core.BNGetGlobalCommentForAddress(self.handle, addr)
+
+	def set_comment_at(self, addr, comment):
+		"""
+		``set_comment_at`` sets a comment for the BinaryView at the address specified
+
+		:param addr int: virtual address within the current BinaryView to apply the comment to
+		:param comment str: string comment to apply
+		:rtype: None
+		:Example:
+
+			>>> bv.set_comment_at(here, "hi")
+
+		"""
+		core.BNSetGlobalCommentForAddress(self.handle, addr, comment)
+
 	def query_metadata(self, key):
 		"""
 		`query_metadata` retrieves a metadata associated with the given key stored in the current BinaryView.
